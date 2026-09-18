@@ -144,3 +144,18 @@
     color: var(--color-foreground);
   }
 }
+
+@layer base {
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  main { padding: 0 !important; }
+}
