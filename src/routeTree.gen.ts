@@ -14,6 +14,7 @@ import { Route as ActionsRouteImport } from './routes/actions'
 import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DataRouteImport } from './routes/data'
+import { Route as OptimizeRouteImport } from './routes/optimize'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const DataRoute = DataRouteImport.update({
   path: '/data',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OptimizeRoute = OptimizeRouteImport.update({
+  id: '/optimize',
+  path: '/optimize',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/analysis': typeof AnalysisRoute
   '/dashboard': typeof DashboardRoute
   '/data': typeof DataRoute
+  '/optimize': typeof OptimizeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/analysis': typeof AnalysisRoute
   '/dashboard': typeof DashboardRoute
   '/data': typeof DataRoute
+  '/optimize': typeof OptimizeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,22 @@ export interface FileRoutesById {
   '/analysis': typeof AnalysisRoute
   '/dashboard': typeof DashboardRoute
   '/data': typeof DataRoute
+  '/optimize': typeof OptimizeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/actions' | '/analysis' | '/dashboard' | '/data'
+  fullPaths:
+    '/' | '/actions' | '/analysis' | '/dashboard' | '/data' | '/optimize'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/actions' | '/analysis' | '/dashboard' | '/data'
-  id: '__root__' | '/' | '/actions' | '/analysis' | '/dashboard' | '/data'
+  to: '/' | '/actions' | '/analysis' | '/dashboard' | '/data' | '/optimize'
+  id:
+    | '__root__'
+    | '/'
+    | '/actions'
+    | '/analysis'
+    | '/dashboard'
+    | '/data'
+    | '/optimize'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +94,7 @@ export interface RootRouteChildren {
   AnalysisRoute: typeof AnalysisRoute
   DashboardRoute: typeof DashboardRoute
   DataRoute: typeof DataRoute
+  OptimizeRoute: typeof OptimizeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DataRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/optimize': {
+      id: '/optimize'
+      path: '/optimize'
+      fullPath: '/optimize'
+      preLoaderRoute: typeof OptimizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +150,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnalysisRoute: AnalysisRoute,
   DashboardRoute: DashboardRoute,
   DataRoute: DataRoute,
+  OptimizeRoute: OptimizeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
