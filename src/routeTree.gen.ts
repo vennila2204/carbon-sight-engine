@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActionsRouteImport } from './routes/actions'
+import { Route as AnalysisRouteImport } from './routes/analysis'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DataRouteImport } from './routes/data'
+import { Route as OptimizeRouteImport } from './routes/optimize'
+import { Route as ReoptimizeRouteImport } from './routes/reoptimize'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SimulatorRouteImport } from './routes/simulator'
+import { Route as AdminDatasetsRouteImport } from './routes/admin.datasets'
+import { Route as AdminSystemRouteImport } from './routes/admin.system'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActionsRoute = ActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalysisRoute = AnalysisRouteImport.update({
+  id: '/analysis',
+  path: '/analysis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataRoute = DataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OptimizeRoute = OptimizeRouteImport.update({
+  id: '/optimize',
+  path: '/optimize',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReoptimizeRoute = ReoptimizeRouteImport.update({
+  id: '/reoptimize',
+  path: '/reoptimize',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimulatorRoute = SimulatorRouteImport.update({
+  id: '/simulator',
+  path: '/simulator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDatasetsRoute = AdminDatasetsRouteImport.update({
+  id: '/admin/datasets',
+  path: '/admin/datasets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSystemRoute = AdminSystemRouteImport.update({
+  id: '/admin/system',
+  path: '/admin/system',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
+  '/analysis': typeof AnalysisRoute
+  '/dashboard': typeof DashboardRoute
+  '/data': typeof DataRoute
+  '/optimize': typeof OptimizeRoute
+  '/reoptimize': typeof ReoptimizeRoute
+  '/reports': typeof ReportsRoute
+  '/simulator': typeof SimulatorRoute
+  '/admin/datasets': typeof AdminDatasetsRoute
+  '/admin/system': typeof AdminSystemRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
+  '/analysis': typeof AnalysisRoute
+  '/dashboard': typeof DashboardRoute
+  '/data': typeof DataRoute
+  '/optimize': typeof OptimizeRoute
+  '/reoptimize': typeof ReoptimizeRoute
+  '/reports': typeof ReportsRoute
+  '/simulator': typeof SimulatorRoute
+  '/admin/datasets': typeof AdminDatasetsRoute
+  '/admin/system': typeof AdminSystemRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/actions': typeof ActionsRoute
+  '/analysis': typeof AnalysisRoute
+  '/dashboard': typeof DashboardRoute
+  '/data': typeof DataRoute
+  '/optimize': typeof OptimizeRoute
+  '/reoptimize': typeof ReoptimizeRoute
+  '/reports': typeof ReportsRoute
+  '/simulator': typeof SimulatorRoute
+  '/admin/datasets': typeof AdminDatasetsRoute
+  '/admin/system': typeof AdminSystemRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/actions'
+    | '/analysis'
+    | '/dashboard'
+    | '/data'
+    | '/optimize'
+    | '/reoptimize'
+    | '/reports'
+    | '/simulator'
+    | '/admin/datasets'
+    | '/admin/system'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/actions'
+    | '/analysis'
+    | '/dashboard'
+    | '/data'
+    | '/optimize'
+    | '/reoptimize'
+    | '/reports'
+    | '/simulator'
+    | '/admin/datasets'
+    | '/admin/system'
+  id:
+    | '__root__'
+    | '/'
+    | '/actions'
+    | '/analysis'
+    | '/dashboard'
+    | '/data'
+    | '/optimize'
+    | '/reoptimize'
+    | '/reports'
+    | '/simulator'
+    | '/admin/datasets'
+    | '/admin/system'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActionsRoute: typeof ActionsRoute
+  AnalysisRoute: typeof AnalysisRoute
+  DashboardRoute: typeof DashboardRoute
+  DataRoute: typeof DataRoute
+  OptimizeRoute: typeof OptimizeRoute
+  ReoptimizeRoute: typeof ReoptimizeRoute
+  ReportsRoute: typeof ReportsRoute
+  SimulatorRoute: typeof SimulatorRoute
+  AdminDatasetsRoute: typeof AdminDatasetsRoute
+  AdminSystemRoute: typeof AdminSystemRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/actions': {
+      id: '/actions'
+      path: '/actions'
+      fullPath: '/actions'
+      preLoaderRoute: typeof ActionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analysis': {
+      id: '/analysis'
+      path: '/analysis'
+      fullPath: '/analysis'
+      preLoaderRoute: typeof AnalysisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data': {
+      id: '/data'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof DataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/optimize': {
+      id: '/optimize'
+      path: '/optimize'
+      fullPath: '/optimize'
+      preLoaderRoute: typeof OptimizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reoptimize': {
+      id: '/reoptimize'
+      path: '/reoptimize'
+      fullPath: '/reoptimize'
+      preLoaderRoute: typeof ReoptimizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simulator': {
+      id: '/simulator'
+      path: '/simulator'
+      fullPath: '/simulator'
+      preLoaderRoute: typeof SimulatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/datasets': {
+      id: '/admin/datasets'
+      path: '/admin/datasets'
+      fullPath: '/admin/datasets'
+      preLoaderRoute: typeof AdminDatasetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/system': {
+      id: '/admin/system'
+      path: '/admin/system'
+      fullPath: '/admin/system'
+      preLoaderRoute: typeof AdminSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActionsRoute: ActionsRoute,
+  AnalysisRoute: AnalysisRoute,
+  DashboardRoute: DashboardRoute,
+  DataRoute: DataRoute,
+  OptimizeRoute: OptimizeRoute,
+  ReoptimizeRoute: ReoptimizeRoute,
+  ReportsRoute: ReportsRoute,
+  SimulatorRoute: SimulatorRoute,
+  AdminDatasetsRoute: AdminDatasetsRoute,
+  AdminSystemRoute: AdminSystemRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
