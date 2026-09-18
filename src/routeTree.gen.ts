@@ -18,6 +18,7 @@ import { Route as OptimizeRouteImport } from './routes/optimize'
 import { Route as ReoptimizeRouteImport } from './routes/reoptimize'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as SimulatorRouteImport } from './routes/simulator'
+import { Route as AdminDatasetsRouteImport } from './routes/admin.datasets'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +65,11 @@ const SimulatorRoute = SimulatorRouteImport.update({
   path: '/simulator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDatasetsRoute = AdminDatasetsRouteImport.update({
+  id: '/admin/datasets',
+  path: '/admin/datasets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/reoptimize': typeof ReoptimizeRoute
   '/reports': typeof ReportsRoute
   '/simulator': typeof SimulatorRoute
+  '/admin/datasets': typeof AdminDatasetsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/reoptimize': typeof ReoptimizeRoute
   '/reports': typeof ReportsRoute
   '/simulator': typeof SimulatorRoute
+  '/admin/datasets': typeof AdminDatasetsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/reoptimize': typeof ReoptimizeRoute
   '/reports': typeof ReportsRoute
   '/simulator': typeof SimulatorRoute
+  '/admin/datasets': typeof AdminDatasetsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/reoptimize'
     | '/reports'
     | '/simulator'
+    | '/admin/datasets'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/reoptimize'
     | '/reports'
     | '/simulator'
+    | '/admin/datasets'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/reoptimize'
     | '/reports'
     | '/simulator'
+    | '/admin/datasets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   ReoptimizeRoute: typeof ReoptimizeRoute
   ReportsRoute: typeof ReportsRoute
   SimulatorRoute: typeof SimulatorRoute
+  AdminDatasetsRoute: typeof AdminDatasetsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SimulatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/datasets': {
+      id: '/admin/datasets'
+      path: '/admin/datasets'
+      fullPath: '/admin/datasets'
+      preLoaderRoute: typeof AdminDatasetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReoptimizeRoute: ReoptimizeRoute,
   ReportsRoute: ReportsRoute,
   SimulatorRoute: SimulatorRoute,
+  AdminDatasetsRoute: AdminDatasetsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
